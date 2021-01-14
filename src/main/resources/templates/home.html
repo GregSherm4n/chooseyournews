@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CHOOSEYOUR.NEWS</title>
+    <link rel="stylesheet" th:href="@{css/normalize.css}"/>
+    <link crossorigin='anonymous' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css'
+          integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' rel='stylesheet'/>
+    <link rel="stylesheet" th:href="@{css/style.css}"/>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__body">
+            <a class="header__logo" href="/home">
+                <i class="far fa-newspaper fa-3x"></i>
+                <p>chooseyour.news</p>
+            </a>
+            <div class="search">
+                <form>
+                    <input type="text" placeholder="Искать здесь...">
+                    <button type="submit"><i class="fas fa-search fa-2x"></i></button>
+                </form>
+            </div>
+            <div class="button_login">
+                <a href="/authorization"><i class="fas fa-sign-in-alt fa-3x"></i></a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="main">
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="/home">На пульсе событий</a>
+                </li>
+                <li>
+                    <a href="/blogs">Давай,рассказывай</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <table class="table">
+        <tbody th:each="n : ${news}">
+            <tr>
+                <td th:text="${n.title}" scope="col"></td>
+                <td th:text="${n.description}" scope="col"></td>
+                <td th:text="${n.url}" scope="col"></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+<!--    <div class="container-item">-->
+<!--        <div class="dropdown">-->
+<!--            <a class="btn btn-info dropdown-toggle" href="" role="button"-->
+<!--               id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"-->
+<!--               aria-expanded="false">Все рубрики</a>-->
+
+<!--            <div id="rubrics" class="dropdown-menu"-->
+<!--                 aria-labelledby="dropdownMenuLink">-->
+<!--                <a id="all" class="dropdown-item" href="/home?slug=all">Все-->
+<!--                    рубрики</a>-->
+<!--                <th:block th:each="rubric : ${rubrics}">-->
+<!--                    <a class="dropdown-item" th:id="${rubric.getSlug()}"-->
+<!--                       th:href="@{/home(slug=${rubric.getSlug()})}"-->
+<!--                       th:text="${rubric.getTitle()}"></a>-->
+<!--                </th:block>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+<!--        <ul id="pages" class="pagination justify-content-end">-->
+<!--            <th:block th:each="num : ${pNums}">-->
+<!--                <li class="page-item"><a class="page-link" th:text="${pNum}"-->
+<!--                                         th:href="@{/home(id=${pNum},slug=${param.slug} ? ${param.slug} : 'all')}"></a>-->
+<!--                </li>-->
+<!--            </th:block>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+</div>
+</body>
+</html>

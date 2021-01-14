@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" th:href="@{css/normalize.css}"/>
+    <link crossorigin='anonymous' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css'
+          integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' rel='stylesheet'/>
+    <link rel="stylesheet" th:href="@{css/style.css}"/>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header__body">
+            <a class="header__logo" href="/home">
+                <i class="far fa-newspaper fa-3x"></i>
+                <p>chooseyour.news</p>
+            </a>
+            <div class="button_back">
+                <a href="/home">
+                    <i class="fas fa-arrow-left fa-2x">Вернуться на главную</i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="authorization">
+    <h1>Вход</h1>
+    <form th:action="@{/authorization}" th:object="${form}" method="post" class="input-form">
+    <div class="input-form">
+        <input type="text" placeholder="Логин" name="login" th:field="*{login}"/>
+    </div>
+    <div class="input-form">
+        <input type="password" placeholder="Пароль" name="password" th:field="*{password}"/>
+    </div>
+    <div class="input-form">
+        <input type="submit" value="Войти"/>
+    </div>
+    <a href="/registration" class="forget">Регистрация</a>
+    </form>
+    <div th:if="${error}" class="error">
+        <span>Вы ввели неверный логин или пароль</span>
+    </div>
+</div>
+</body>
+</html>
